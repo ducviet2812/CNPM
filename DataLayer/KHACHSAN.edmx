@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KHACHSANModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_CTDP">
+          <Key>
+            <PropertyRef Name="MADP" />
+            <PropertyRef Name="MAPHONG" />
+          </Key>
+          <Property Name="MADP" Type="int" Nullable="false" />
+          <Property Name="MAPHONG" Type="int" Nullable="false" />
+          <Property Name="SONGUOI" Type="int" Nullable="false" />
+          <Property Name="NGAYNHAN" Type="datetime" Nullable="false" />
+          <Property Name="NGAYTRA" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_DATPHONG">
+          <Key>
+            <PropertyRef Name="MADP" />
+          </Key>
+          <Property Name="MADP" Type="int" Nullable="false" />
+          <Property Name="MAKH" Type="int" Nullable="false" />
+          <Property Name="MANV" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_DATPHONG-DICHVU">
+          <Key>
+            <PropertyRef Name="MADV" />
+            <PropertyRef Name="MADP" />
+          </Key>
+          <Property Name="MADV" Type="int" Nullable="false" />
+          <Property Name="MADP" Type="int" Nullable="false" />
+          <Property Name="SOLUONG" Type="int" Nullable="false" />
+          <Property Name="DONGIA" Type="float" Nullable="false" />
+          <Property Name="THANHTIEN" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_DICHVU">
+          <Key>
+            <PropertyRef Name="MADV" />
+          </Key>
+          <Property Name="MADV" Type="int" Nullable="false" />
+          <Property Name="TENDV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DONGIA" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_KHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKH" />
+          </Key>
+          <Property Name="MAKH" Type="int" Nullable="false" />
+          <Property Name="TENKH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CCCD/CMND" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="SDT" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_LOAIPHONG">
+          <Key>
+            <PropertyRef Name="MALP" />
+          </Key>
+          <Property Name="MALP" Type="int" Nullable="false" />
+          <Property Name="TENLP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SONGUOI" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_NHANVIEN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="int" Nullable="false" />
+          <Property Name="TENNV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CHUCVU" Type="bit" Nullable="false" />
+          <Property Name="ID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="PASSWORD" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="DISABLE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_PHONG">
+          <Key>
+            <PropertyRef Name="MAPHONG" />
+          </Key>
+          <Property Name="MAPHONG" Type="int" Nullable="false" />
+          <Property Name="TENPHONG" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TRANGTHAIPHONG" Type="bit" Nullable="false" />
+          <Property Name="MALP" Type="int" Nullable="false" />
+          <Property Name="DONGIA" Type="float" />
+        </EntityType>
+        <EntityType Name="tb_PHONG-THIETBI">
+          <Key>
+            <PropertyRef Name="MAPHONG" />
+            <PropertyRef Name="MATB" />
+          </Key>
+          <Property Name="MAPHONG" Type="int" Nullable="false" />
+          <Property Name="MATB" Type="int" Nullable="false" />
+          <Property Name="SOLUONG" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_THANHTOAN">
+          <Key>
+            <PropertyRef Name="MATT" />
+          </Key>
+          <Property Name="MATT" Type="int" Nullable="false" />
+          <Property Name="NGAYTT" Type="datetime" Nullable="false" />
+          <Property Name="TONGTIENTT" Type="float" Nullable="false" />
+          <Property Name="TRANGTHAITT" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_THIETBI">
+          <Key>
+            <PropertyRef Name="MATB" />
+          </Key>
+          <Property Name="MATB" Type="int" Nullable="false" />
+          <Property Name="TENTB" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DONGIA" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="KHACHSANModelStoreContainer">
+          <EntitySet Name="tb_CTDP" EntityType="Self.tb_CTDP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_DATPHONG" EntityType="Self.tb_DATPHONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_DATPHONG-DICHVU" EntityType="Self.tb_DATPHONG-DICHVU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_DICHVU" EntityType="Self.tb_DICHVU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_KHACHHANG" EntityType="Self.tb_KHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_LOAIPHONG" EntityType="Self.tb_LOAIPHONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_NHANVIEN" EntityType="Self.tb_NHANVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_PHONG" EntityType="Self.tb_PHONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_PHONG-THIETBI" EntityType="Self.tb_PHONG-THIETBI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_THANHTOAN" EntityType="Self.tb_THANHTOAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_THIETBI" EntityType="Self.tb_THIETBI" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KHACHSANModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_CTDP">
+          <Key>
+            <PropertyRef Name="MADP" />
+            <PropertyRef Name="MAPHONG" />
+          </Key>
+          <Property Name="MADP" Type="Int32" Nullable="false" />
+          <Property Name="MAPHONG" Type="Int32" Nullable="false" />
+          <Property Name="SONGUOI" Type="Int32" Nullable="false" />
+          <Property Name="NGAYNHAN" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NGAYTRA" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tb_DATPHONG">
+          <Key>
+            <PropertyRef Name="MADP" />
+          </Key>
+          <Property Name="MADP" Type="Int32" Nullable="false" />
+          <Property Name="MAKH" Type="Int32" Nullable="false" />
+          <Property Name="MANV" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_DATPHONG_DICHVU">
+          <Key>
+            <PropertyRef Name="MADV" />
+            <PropertyRef Name="MADP" />
+          </Key>
+          <Property Name="MADV" Type="Int32" Nullable="false" />
+          <Property Name="MADP" Type="Int32" Nullable="false" />
+          <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+          <Property Name="DONGIA" Type="Double" Nullable="false" />
+          <Property Name="THANHTIEN" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_DICHVU">
+          <Key>
+            <PropertyRef Name="MADV" />
+          </Key>
+          <Property Name="MADV" Type="Int32" Nullable="false" />
+          <Property Name="TENDV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DONGIA" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_KHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKH" />
+          </Key>
+          <Property Name="MAKH" Type="Int32" Nullable="false" />
+          <Property Name="TENKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DIACHI" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CCCD_CMND" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_LOAIPHONG">
+          <Key>
+            <PropertyRef Name="MALP" />
+          </Key>
+          <Property Name="MALP" Type="Int32" Nullable="false" />
+          <Property Name="TENLP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SONGUOI" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_NHANVIEN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="Int32" Nullable="false" />
+          <Property Name="TENNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CHUCVU" Type="Boolean" Nullable="false" />
+          <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DISABLE" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_PHONG">
+          <Key>
+            <PropertyRef Name="MAPHONG" />
+          </Key>
+          <Property Name="MAPHONG" Type="Int32" Nullable="false" />
+          <Property Name="TENPHONG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TRANGTHAIPHONG" Type="Boolean" Nullable="false" />
+          <Property Name="MALP" Type="Int32" Nullable="false" />
+          <Property Name="DONGIA" Type="Double" />
+        </EntityType>
+        <EntityType Name="tb_PHONG_THIETBI">
+          <Key>
+            <PropertyRef Name="MAPHONG" />
+            <PropertyRef Name="MATB" />
+          </Key>
+          <Property Name="MAPHONG" Type="Int32" Nullable="false" />
+          <Property Name="MATB" Type="Int32" Nullable="false" />
+          <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_THANHTOAN">
+          <Key>
+            <PropertyRef Name="MATT" />
+          </Key>
+          <Property Name="MATT" Type="Int32" Nullable="false" />
+          <Property Name="NGAYTT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TONGTIENTT" Type="Double" Nullable="false" />
+          <Property Name="TRANGTHAITT" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_THIETBI">
+          <Key>
+            <PropertyRef Name="MATB" />
+          </Key>
+          <Property Name="MATB" Type="Int32" Nullable="false" />
+          <Property Name="TENTB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DONGIA" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="KHACHSAN" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_CTDP" EntityType="Self.tb_CTDP" />
+          <EntitySet Name="tb_DATPHONG" EntityType="Self.tb_DATPHONG" />
+          <EntitySet Name="tb_DATPHONG_DICHVU" EntityType="Self.tb_DATPHONG_DICHVU" />
+          <EntitySet Name="tb_DICHVU" EntityType="Self.tb_DICHVU" />
+          <EntitySet Name="tb_KHACHHANG" EntityType="Self.tb_KHACHHANG" />
+          <EntitySet Name="tb_LOAIPHONG" EntityType="Self.tb_LOAIPHONG" />
+          <EntitySet Name="tb_NHANVIEN" EntityType="Self.tb_NHANVIEN" />
+          <EntitySet Name="tb_PHONG" EntityType="Self.tb_PHONG" />
+          <EntitySet Name="tb_PHONG_THIETBI" EntityType="Self.tb_PHONG_THIETBI" />
+          <EntitySet Name="tb_THANHTOAN" EntityType="Self.tb_THANHTOAN" />
+          <EntitySet Name="tb_THIETBI" EntityType="Self.tb_THIETBI" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KHACHSANModelStoreContainer" CdmEntityContainer="KHACHSAN">
+          <EntitySetMapping Name="tb_CTDP">
+            <EntityTypeMapping TypeName="KHACHSANModel.tb_CTDP">
+              <MappingFragment StoreEntitySet="tb_CTDP">
+                <ScalarProperty Name="MADP" ColumnName="MADP" />
+                <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
+                <ScalarProperty Name="SONGUOI" ColumnName="SONGUOI" />
+                <ScalarProperty Name="NGAYNHAN" ColumnName="NGAYNHAN" />
+                <ScalarProperty Name="NGAYTRA" ColumnName="NGAYTRA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_DATPHONG">
+            <EntityTypeMapping TypeName="KHACHSANModel.tb_DATPHONG">
+              <MappingFragment StoreEntitySet="tb_DATPHONG">
+                <ScalarProperty Name="MADP" ColumnName="MADP" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_DATPHONG_DICHVU">
+            <EntityTypeMapping TypeName="KHACHSANModel.tb_DATPHONG_DICHVU">
+              <MappingFragment StoreEntitySet="tb_DATPHONG-DICHVU">
+                <ScalarProperty Name="MADV" ColumnName="MADV" />
+                <ScalarProperty Name="MADP" ColumnName="MADP" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+                <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_DICHVU">
+            <EntityTypeMapping TypeName="KHACHSANModel.tb_DICHVU">
+              <MappingFragment StoreEntitySet="tb_DICHVU">
+                <ScalarProperty Name="MADV" ColumnName="MADV" />
+                <ScalarProperty Name="TENDV" ColumnName="TENDV" />
+                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_KHACHHANG">
+            <EntityTypeMapping TypeName="KHACHSANModel.tb_KHACHHANG">
+              <MappingFragment StoreEntitySet="tb_KHACHHANG">
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="TENKH" ColumnName="TENKH" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="CCCD_CMND" ColumnName="CCCD/CMND" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_LOAIPHONG">
+            <EntityTypeMapping TypeName="KHACHSANModel.tb_LOAIPHONG">
+              <MappingFragment StoreEntitySet="tb_LOAIPHONG">
+                <ScalarProperty Name="MALP" ColumnName="MALP" />
+                <ScalarProperty Name="TENLP" ColumnName="TENLP" />
+                <ScalarProperty Name="SONGUOI" ColumnName="SONGUOI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_NHANVIEN">
+            <EntityTypeMapping TypeName="KHACHSANModel.tb_NHANVIEN">
+              <MappingFragment StoreEntitySet="tb_NHANVIEN">
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="TENNV" ColumnName="TENNV" />
+                <ScalarProperty Name="CHUCVU" ColumnName="CHUCVU" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="DISABLE" ColumnName="DISABLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_PHONG">
+            <EntityTypeMapping TypeName="KHACHSANModel.tb_PHONG">
+              <MappingFragment StoreEntitySet="tb_PHONG">
+                <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
+                <ScalarProperty Name="TENPHONG" ColumnName="TENPHONG" />
+                <ScalarProperty Name="TRANGTHAIPHONG" ColumnName="TRANGTHAIPHONG" />
+                <ScalarProperty Name="MALP" ColumnName="MALP" />
+                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_PHONG_THIETBI">
+            <EntityTypeMapping TypeName="KHACHSANModel.tb_PHONG_THIETBI">
+              <MappingFragment StoreEntitySet="tb_PHONG-THIETBI">
+                <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
+                <ScalarProperty Name="MATB" ColumnName="MATB" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_THANHTOAN">
+            <EntityTypeMapping TypeName="KHACHSANModel.tb_THANHTOAN">
+              <MappingFragment StoreEntitySet="tb_THANHTOAN">
+                <ScalarProperty Name="MATT" ColumnName="MATT" />
+                <ScalarProperty Name="NGAYTT" ColumnName="NGAYTT" />
+                <ScalarProperty Name="TONGTIENTT" ColumnName="TONGTIENTT" />
+                <ScalarProperty Name="TRANGTHAITT" ColumnName="TRANGTHAITT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_THIETBI">
+            <EntityTypeMapping TypeName="KHACHSANModel.tb_THIETBI">
+              <MappingFragment StoreEntitySet="tb_THIETBI">
+                <ScalarProperty Name="MATB" ColumnName="MATB" />
+                <ScalarProperty Name="TENTB" ColumnName="TENTB" />
+                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
